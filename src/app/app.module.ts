@@ -2,6 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MembersComponent } from './components/members/members.component';
@@ -15,11 +19,22 @@ import { RegisterComponent } from './components/register/register.component';
 import { SettingComponent } from './components/setting/setting.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
+import { MemberService } from './services/member.service';
+
 const appRoutes: Routes = [
   { path:'', component:DashboardComponent },
   { path:'register', component:RegisterComponent },
   { path:'login', component:LoginComponent }
 ];
+
+export const firebaseConfig = {
+    apiKey: "AIzaSyA6lAUPkyFVg4dVE71mHOTfLHPVzhne-Xg",
+    authDomain: "membershipfeesmanager.firebaseapp.com",
+    databaseURL: "https://membershipfeesmanager.firebaseio.com",
+    storageBucket: "membershipfeesmanager.appspot.com",
+    messagingSenderId: "943347794197"
+}
+  
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,9 +52,14 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [],
+  providers: [
+    AngularFireAuth,
+    AngularFireDatabase,
+    MemberService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
