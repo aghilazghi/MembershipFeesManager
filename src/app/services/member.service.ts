@@ -17,4 +17,8 @@ export class MemberService {
      return this.members;
    }
 
+   newMember(member: Member) {
+     this.members.push(member);
+   }
+
 }
