@@ -21,4 +21,13 @@ export class MemberService {
      this.members.push(member);
    }
 
+   getMember(id: string) {
+     this.member = this.afDb.object('/members/' + id) as FirebaseObjectObservable<Member>;
+     return this.member;
+   }
+
+   updateMember(id: string, member: Member) {
+    return this.members.update(id, member);
+   }
+
 }

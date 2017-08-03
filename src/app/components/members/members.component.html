@@ -24,7 +24,7 @@
       <td>{{ member.lastName }}</td>
       <td>{{ member.email }}</td>
       <td>{{ member.balance | currency:"USD":true }}</td>
-      <td><a href="" class="btn btn-default btn-medium"><i class="fa fa-arrow-circle-right"></i> Details</a></td>
+      <td><a [routerLink]="['/member/'+member.$key]" href="" class="btn btn-default btn-medium"><i class="fa fa-arrow-circle-right"></i> Details</a></td>
     </tr>
   </tbody>
  

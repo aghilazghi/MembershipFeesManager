@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { FlashMessagesModule } from 'angular2-flash-messages';
@@ -27,7 +27,8 @@ const appRoutes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'add-member', component: AddMemberComponent}
+  { path: 'add-member', component: AddMemberComponent },
+  { path: 'member/:id', component: MemberDetailsComponent }
 ];
 
 export const firebaseConfig = {
