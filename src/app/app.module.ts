@@ -28,7 +28,8 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'add-member', component: AddMemberComponent },
-  { path: 'member/:id', component: MemberDetailsComponent }
+  { path: 'member/:id', component: MemberDetailsComponent },
+  { path: 'edit-member/:id', component: EditMemberComponent }
 ];
 
 export const firebaseConfig = {

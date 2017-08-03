@@ -45,6 +45,5 @@ export class MemberDetailsComponent implements OnInit {
       this.flashMessagesService.show('Member has benn deleted successfully!', {cssClass: 'alert-danger', timeout: 4000});
       this.router.navigate(['/']);
     }
-
   }
 }
