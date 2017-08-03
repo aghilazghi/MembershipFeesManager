@@ -34,8 +34,17 @@ export class MemberDetailsComponent implements OnInit {
 
   updateBalance(id: string) {
     this.memberService.updateMember(this.id, this.member);
-    this.flashMessagesService.show('Balance has updated successfully!', {cssClass: 'alert-success', timeout: 4000});
+    this.flashMessagesService.show('Balance has been updated successfully!', {cssClass: 'alert-success', timeout: 4000});
     this.router.navigate(['/member/' + this.id]);
     this.showBalanceUpdateInput = false;
+  }
+
+  onDelete() {
+    if (confirm('Are you sure to delete this member?')) {
+      this.memberService.deleteMember(this.id);
+      this.flashMessagesService.show('Member has benn deleted successfully!', {cssClass: 'alert-danger', timeout: 4000});
+      this.router.navigate(['/']);
+    }
+
   }
 }

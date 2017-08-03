@@ -30,4 +30,8 @@ export class MemberService {
     return this.members.update(id, member);
    }
 
+   deleteMember (id: string) {
+     return this.members.remove(id);
+   }
+
 }
