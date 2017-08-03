@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -22,6 +23,7 @@ import { SettingComponent } from './components/setting/setting.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 import { MemberService } from './services/member.service';
+import { AuthService } from './services/auth.service';
 
 const appRoutes: Routes = [
   { path: '', component: DashboardComponent },
@@ -65,7 +67,8 @@ export const firebaseConfig = {
   providers: [
     AngularFireAuth,
     AngularFireDatabase,
-    MemberService
+    MemberService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
