@@ -1,5 +1,6 @@
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthService {
@@ -12,5 +13,13 @@ export class AuthService {
         .then(userData => resolve(userData),
         err => reject(err));
     });
+  }
+
+  getAuth() {
+    return this.afAuth.authState.map(auth => auth);
+  }
+
+  logout() {
+    this.afAuth.auth.signOut();
   }
 }

@@ -1,7 +1,7 @@
 import { Member } from './../models/member';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Rx';
 
 
 @Injectable()
