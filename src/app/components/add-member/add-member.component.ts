@@ -1,3 +1,4 @@
+import { SettingsService } from './../../services/settings.service';
 import { MemberService } from './../../services/member.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Member } from './../../models/member';
@@ -24,10 +25,12 @@ export class AddMemberComponent implements OnInit {
   constructor(
     public flashMessagesService: FlashMessagesService,
     public router: Router,
-    public memberService: MemberService
+    public memberService: MemberService,
+    public settingsService: SettingsService
   ) { }
 
   ngOnInit() {
+    this.disableBalanceOnAdd = this.settingsService.getSettings().disableBalanceOnAdd;
   }
 
   onSubmit({value, valid}: {value: Member, valid: boolean}) {

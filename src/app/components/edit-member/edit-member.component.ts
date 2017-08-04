@@ -1,3 +1,4 @@
+import { SettingsService } from './../../services/settings.service';
 import { Member } from './../../models/member';
 import { Component, OnInit } from '@angular/core';
 import { MemberService } from '../../services/member.service';
@@ -25,7 +26,8 @@ export class EditMemberComponent implements OnInit {
     public memberService: MemberService,
     public flashMessagesService: FlashMessagesService,
     public router: Router,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    public settingsService: SettingsService
   ) { }
 
   ngOnInit() {
@@ -33,6 +35,7 @@ export class EditMemberComponent implements OnInit {
     this.memberService.getMember(this.id).subscribe(member => {
       this.member = member;
     });
+    this.disableBalanceOnEdit = this.settingsService.getSettings().disableBalanceOnEdit;
   }
 
    onSubmit({value, valid}: {value: Member, valid: boolean}) {

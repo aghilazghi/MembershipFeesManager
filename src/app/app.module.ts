@@ -24,14 +24,18 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { MemberService } from './services/member.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
+import { RegisterGuard } from './guards/register.guard';
+import { SettingsService } from './services/settings.service';
 
 const appRoutes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent, canActivate: [RegisterGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'add-member', component: AddMemberComponent, canActivate: [AuthGuard] },
   { path: 'member/:id', component: MemberDetailsComponent, canActivate: [AuthGuard] },
-  { path: 'edit-member/:id', component: EditMemberComponent, canActivate: [AuthGuard] }
+  { path: 'edit-member/:id', component: EditMemberComponent, canActivate: [AuthGuard] },
+  { path: 'settings', component: SettingComponent, canActivate: [AuthGuard] },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 export const firebaseConfig = {
@@ -69,7 +73,9 @@ export const firebaseConfig = {
     AngularFireDatabase,
     MemberService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    SettingsService,
+    RegisterGuard
   ],
   bootstrap: [AppComponent]
 })
